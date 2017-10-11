@@ -17,6 +17,7 @@ const Concat = require('broccoli-concat');
 const Funnel = require('broccoli-funnel');
 const p = require('ember-cli-preprocess-registry/preprocessors');
 const existsSync = fs.existsSync;
+const fastbootTransform = require('fastboot-transform');
 
 let checker;
 function getVersionChecker(context) {
@@ -35,6 +36,14 @@ module.exports = {
 
   init() {
     this._super.init && this._super.init.apply(this, arguments);
+  },
+
+  importTransforms() {
+    return {
+      fastbootShim: (tree) => {
+        return fastbootTransform(tree);
+      }
+    }
   },
 
   /**
@@ -206,8 +215,8 @@ module.exports = {
   /**
    * Need to handroll our own clone algorithm since JSON.stringy changes regex
    * to empty objects which breaks hostWhiteList property of fastboot.
-   * 
-   * @param {Object} config 
+   *
+   * @param {Object} config
    */
   _cloneConfigObject(config) {
     if (config === null || typeof config !== 'object') {
