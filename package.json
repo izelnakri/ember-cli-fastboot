@@ -1,17 +1,17 @@
 {
-  "name": "ember-cli-fastboot",
+  "name": "ember-cli-fastboot-with-full-dom",
   "version": "1.0.5",
-  "description": "Server-side rendering for Ember.js apps",
+  "description": "ember-cli-fastboot fork with vdom, needed for pretender/memserver http mock server. THIS PACKAGE/FORK IS ONLY NEEDED FOR MEMSERVER.",
   "keywords": [
     "ember-addon"
   ],
   "license": "MIT",
-  "author": "Tom Dale & Yehuda Katz <tomhuda@tilde.io>",
+  "author": "Izel Nakri",
   "directories": {
     "doc": "doc",
     "test": "tests"
   },
-  "repository": "https://github.com/ember-fastboot/ember-cli-fastboot",
+  "repository": "https://github.com/izelnakri/ember-cli-fastboot",
   "scripts": {
     "build": "ember build",
     "start": "ember server",
