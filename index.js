@@ -302,11 +302,32 @@ module.exports = {
           // if it is a base page request, then have fastboot serve the base page
           if (!this.fastboot) {
             // TODO(future): make this configurable for allowing apps to pass sandboxGlobals
-            // and custom sandbox class
-            this.ui.writeLine(chalk.green('App is being served by FastBoot'));
-            this.fastboot = new FastBoot({
-              distPath: outputPath
-            });
+
+            this.MemServerENV = this.app.project.config(this.app.env)['ember-cli-memserver'] || {};
+
+            if (this.MemServerENV.enabled) {
+              // NOTE: if ember-cli-memserver is enabled do this
+              const MemServer = require('memserver');
+              const $ = require('jquery');
+
+              MemServer.start();
+
+              this.ui.writeLine(chalk.green('App is being served by FastBoot'));
+              this.fastboot = new FastBoot({
+                distPath: outputPath,
+                sandboxGlobals: {
+                  global: global,
+                  window: global.window,
+                  document: global.document,
+                  location: global.window.location,
+                  $: $,
+                  navigator: global.window.navigator
+                }
+              });
+            } else {
+              this.ui.writeLine(chalk.green('App is being served by FastBoot'));
+              this.fastboot = new FastBoot({ distPath: outputPath });
+            }
           }
 
           let fastbootMiddleware = FastBootExpressMiddleware({
