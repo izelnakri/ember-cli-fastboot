@@ -325,6 +325,7 @@ module.exports = {
                   window: global.window,
                   document: global.document,
                   location: global.window.location,
+                  XMLHttpRequest: global.window.XMLHttpRequest,
                   $: $,
                   navigator: global.window.navigator
                 }
