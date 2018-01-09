@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-fastboot-with-full-dom",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "ember-cli-fastboot fork with vdom, needed for pretender/memserver http mock server. THIS PACKAGE/FORK IS ONLY NEEDED FOR MEMSERVER.",
   "keywords": [
     "ember-addon"
@@ -33,7 +33,7 @@
     "fs-extra": "^4.0.2",
     "json-stable-stringify": "^1.0.1",
     "md5-hex": "^2.0.0",
-    "memserver": "^1.0.2",
+    "memserver": "^1.0.3",
     "silent-error": "^1.0.0"
   },
   "devDependencies": {
