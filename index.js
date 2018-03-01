@@ -331,6 +331,7 @@ module.exports = {
                   location: global.window.location,
                   XMLHttpRequest: global.window.XMLHttpRequest,
                   $: $,
+                  jQuery: $,
                   navigator: global.window.navigator
                 }
               });
